@@ -1,17 +1,19 @@
 package course.pmu.dto;
 
-import java.sql.Date;
+import java.time.Instant;
 import java.util.List;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
 @Data
 @ToString
+@Builder
 public class CourseDTO {
 
 	private Integer CourseId;
@@ -21,7 +23,7 @@ public class CourseDTO {
 	private LieuDTO lieu;
 	
     @NotNull(message = "Le date d'une course ne peut pas être null")
-    private Date jour;
+    private Instant jour;
 
     @NotNull(message = "Le nom d'une course ne peut pas être null")
     @NotEmpty(message = "Le nom d'une course ne peut pas être vide")

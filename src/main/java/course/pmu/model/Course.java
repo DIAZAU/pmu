@@ -1,7 +1,7 @@
 package course.pmu.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.Instant;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -42,7 +42,7 @@ public class Course implements Serializable {
 	private Lieu lieu;
 	
 	@Column(name = "CourseJour", nullable = false, length = 256)
-	private Date jour;
+	private Instant jour;
 
 
 	@Column(name = "courseNom", nullable = false, length = 256)
