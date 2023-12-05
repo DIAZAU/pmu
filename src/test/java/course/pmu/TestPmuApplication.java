@@ -28,6 +28,7 @@ import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
@@ -87,7 +88,7 @@ public class TestPmuApplication {
 		CourseDTO courseDTO = CourseDTO.builder()
 				.nom("Course 1")
 				.numero("AZE1234")
-				.jour(Instant.now())
+				.jour(LocalDate.now().toString())
 				.lieu(LieuDTO.builder().hyppodrome("Hypo 1").terrain("Terrain 1").build())
 				.partants(List.of(PartantDTO.builder().nom("Partant 1").build(), PartantDTO.builder().nom("Partant 2").build(), PartantDTO.builder().nom("Partant 3").build()))
 				.build();
@@ -97,11 +98,9 @@ public class TestPmuApplication {
 
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.findAndRegisterModules();
-		JavaTimeModule module = new JavaTimeModule();
-		//mapper.registerModule(module);
 		String json = mapper.writeValueAsString(courseDTO);
 
-		//assertThat(received, hasValue(json));
+		assertThat(received, hasValue(json));
 
 		assertThat(received).has(key(null));
 	}

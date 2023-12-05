@@ -3,6 +3,7 @@ package course.pmu.dto;
 import java.time.Instant;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -23,7 +24,8 @@ public class CourseDTO {
 	private LieuDTO lieu;
 	
     @NotNull(message = "Le date d'une course ne peut pas être null")
-    private Instant jour;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private String jour;
 
     @NotNull(message = "Le nom d'une course ne peut pas être null")
     @NotEmpty(message = "Le nom d'une course ne peut pas être vide")

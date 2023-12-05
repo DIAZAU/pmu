@@ -42,7 +42,7 @@ public class Course implements Serializable {
 	private Lieu lieu;
 	
 	@Column(name = "CourseJour", nullable = false, length = 256)
-	private Instant jour;
+	private String jour;
 
 
 	@Column(name = "courseNom", nullable = false, length = 256)
